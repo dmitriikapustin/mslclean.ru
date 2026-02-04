@@ -9,6 +9,7 @@ import {
   SolutionSection,
   USPSection,
   HowItWorksSection,
+  GallerySection,
   CTASection,
 } from '@/components/templates'
 
@@ -27,6 +28,7 @@ export default function HomePage() {
         <SolutionSection />
         <USPSection />
         <HowItWorksSection />
+        <GallerySection />
         <CTASection />
       </main>
       

@@ -52,7 +52,7 @@ export default function HeroSection() {
         <div className={styles.imageWrapper}>
           <div className={styles.image}>
             <Image 
-              src="/assets/hero-cleaning.jpg" 
+              src="/images/cleaning-hero.png" 
               alt="Профессиональный клининг"
               fill
               priority
