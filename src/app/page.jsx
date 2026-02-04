@@ -5,6 +5,15 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
+import { 
+  Dumbbell, 
+  CheckCircle, 
+  Wallet, 
+  Zap, 
+  FileText, 
+  Eye,
+  Gift
+} from 'lucide-react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import styles from './page.module.css'
@@ -78,32 +87,32 @@ const SOLUTIONS = [
 
 const USP = [
   {
-    icon: '🏋️',
+    Icon: Dumbbell,
     title: 'Специалист по фитнес-клубам и ресторанам',
     desc: 'Мы работаем с вашей индустрией 3+ года, понимаем специфику',
   },
   {
-    icon: '✓',
+    Icon: CheckCircle,
     title: 'Гарантия качества',
     desc: 'Если персонал не подходит — замена в течение дня, без доплаты',
   },
   {
-    icon: '💰',
+    Icon: Wallet,
     title: 'Фиксированная цена',
     desc: 'Никаких скрытых платежей, никаких наличных расчетов',
   },
   {
-    icon: '⚡',
+    Icon: Zap,
     title: 'Быстрый подбор',
     desc: 'Готовый персонал за 24-48 часов, замена — за 2 часа',
   },
   {
-    icon: '📋',
+    Icon: FileText,
     title: 'Полная юридическая поддержка',
     desc: 'Договор, налоги, ПФР, страховка — все на нас',
   },
   {
-    icon: '👁️',
+    Icon: Eye,
     title: 'Контроль 24/7',
     desc: 'Менеджер отвечает за каждый объект, контроль качества в режиме реального времени',
   },
@@ -434,17 +443,22 @@ export default function HomePage() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {USP.map((item, i) => (
-                <motion.div 
-                  key={i}
-                  className={styles.uspCard}
-                  variants={fadeInUp}
-                >
-                  <div className={styles.uspIcon}>{item.icon}</div>
-                  <h3 className={styles.uspTitle}>{item.title}</h3>
-                  <p className={styles.uspDesc}>{item.desc}</p>
-                </motion.div>
-              ))}
+              {USP.map((item, i) => {
+                const IconComponent = item.Icon
+                return (
+                  <motion.div 
+                    key={i}
+                    className={styles.uspCard}
+                    variants={fadeInUp}
+                  >
+                    <div className={styles.uspIcon}>
+                      <IconComponent size={28} strokeWidth={1.5} />
+                    </div>
+                    <h3 className={styles.uspTitle}>{item.title}</h3>
+                    <p className={styles.uspDesc}>{item.desc}</p>
+                  </motion.div>
+                )
+              })}
             </motion.div>
           </div>
         </section>
@@ -667,7 +681,7 @@ export default function HomePage() {
                 <div className={styles.footerColumn}>
                   <h5 className={styles.footerHeading}>Акция</h5>
                   <div className={styles.footerPromo}>
-                    <span className={styles.promoTag}>🎁 Скидка 10%</span>
+                    <span className={styles.promoTag}><Gift size={14} style={{display: 'inline', verticalAlign: 'middle', marginRight: '4px'}} /> Скидка 10%</span>
                     <span>для сетевых бизнесов</span>
                   </div>
                 </div>
