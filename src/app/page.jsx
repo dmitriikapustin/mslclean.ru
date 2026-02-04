@@ -139,11 +139,11 @@ const STEPS = [
 ]
 
 const PORTFOLIO = [
-  { title: 'Фитнес-клуб Premium', image: '/images/cleaning-office.png' },
-  { title: 'Ресторан Москва', image: '/images/cleaning-kitchen.png' },
-  { title: 'Бизнес-центр Сити', image: '/images/cleaning-livingroom.png' },
-  { title: 'Сеть кафе Вкусно', image: '/images/cleaning-team.png' },
-  { title: 'Отель Люкс', image: '/images/cleaning-hero.png' },
+  { title: 'Фитнес-клуб Premium', image: '/images/portfolio-gym.jpg' },
+  { title: 'Ресторан Москва', image: '/images/portfolio-restaurant.jpg' },
+  { title: 'Бизнес-центр Сити', image: '/images/portfolio-office.jpg' },
+  { title: 'Сеть кафе Вкусно', image: '/images/portfolio-cafe.jpg' },
+  { title: 'Отель Люкс', image: '/images/portfolio-hotel.jpg' },
 ]
 
 // Animation variants
@@ -242,8 +242,8 @@ export default function HomePage() {
               {/* Background Image */}
               <div className={styles.heroBkg}>
                 <Image 
-                  src="/images/cleaning-hero.png"
-                  alt="Профессиональный клининг"
+                  src="/images/hero-bg.jpg"
+                  alt="Современный офис"
                   fill
                   priority
                   className={styles.heroImage}
@@ -296,7 +296,7 @@ export default function HomePage() {
         <section className={styles.bannerSection}>
           <div className={styles.bannerBkg}>
             <Image 
-              src="/images/cleaning-kitchen.png"
+              src="/images/banner-kitchen.jpg"
               alt="Чистая кухня ресторана"
               fill
               className={styles.bannerImage}
