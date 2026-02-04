@@ -1,0 +1,42 @@
+.section {
+  padding: 100px 0;
+  background: var(--surface);
+}
+
+.inner {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.content h2 {
+  margin: 16px 0;
+}
+
+.text {
+  font-size: 1.125rem;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phone {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.phone:hover {
+  color: var(--accent-dark);
+}

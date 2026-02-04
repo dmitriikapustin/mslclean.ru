@@ -1,0 +1,33 @@
+.item {
+  display: flex;
+  gap: 16px;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  background: var(--accent);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+.content {
+  flex: 1;
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--primary);
+}
+
+.text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}

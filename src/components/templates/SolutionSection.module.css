@@ -1,0 +1,53 @@
+.section {
+  padding: 100px 0;
+  background: var(--surface);
+}
+
+.inner {
+  display: grid;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.content h2 {
+  margin: 16px 0;
+}
+
+.lead {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.visual {
+  background: var(--primary);
+  border-radius: 16px;
+  padding: 48px;
+  color: white;
+  text-align: center;
+}
+
+.visual h3 {
+  color: white;
+  margin-bottom: 32px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}

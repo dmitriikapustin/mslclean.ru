@@ -1,0 +1,30 @@
+.tag {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.accent {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.muted {
+  background: transparent;
+  color: var(--accent-dark);
+}
+
+.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent-dark);
+}

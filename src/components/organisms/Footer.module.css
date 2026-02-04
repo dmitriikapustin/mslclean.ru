@@ -1,0 +1,65 @@
+.footer {
+  padding: 64px 0 32px;
+  background: var(--primary);
+  color: white;
+}
+
+.inner {
+  display: grid;
+  gap: 48px;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}
+
+.brand {
+  max-width: 300px;
+}
+
+.description {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+.column {
+}
+
+.columnTitle {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.links {
+  list-style: none;
+}
+
+.links li {
+  margin-bottom: 12px;
+}
+
+.links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 0.95rem;
+}
+
+.links a:hover {
+  color: var(--accent);
+}
+
+.bottom {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.875rem;
+}
