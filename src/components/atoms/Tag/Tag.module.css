@@ -1,0 +1,26 @@
+.tag {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-4);
+}
+
+/* ==================== VARIANTS ==================== */
+
+.variant-default {
+  color: var(--color-secondary);
+}
+
+.variant-dark {
+  color: var(--color-text-on-dark-muted);
+}
+
+.variant-accent {
+  color: var(--color-accent);
+}
+
+.variant-white {
+  color: var(--color-text-on-dark-muted);
+}

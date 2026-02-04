@@ -1,14 +1,10 @@
-// Atoms - базовые неделимые компоненты
-
+// Atoms — базовые компоненты
 export { default as Button } from './Button'
+export { default as Container } from './Container'
+export { default as Tag } from './Tag'
+
+// Legacy exports (для обратной совместимости)
 export { default as Input } from './Input'
 export { default as Textarea } from './Textarea'
-export { default as Icon } from './Icon'
-export { default as Tag } from './Tag'
 export { default as Logo } from './Logo'
-export { default as Container } from './Container'
-
-// Animation components
-export { default as AnimatedSection } from './AnimatedSection'
-export { default as AnimatedText } from './AnimatedText'
-export { StaggerContainer, StaggerItem } from './StaggerContainer'
+export { default as Icon } from './Icon'

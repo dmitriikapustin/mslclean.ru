@@ -1,0 +1,57 @@
+.card {
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.num {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-medium);
+  margin: 0 auto var(--space-6);
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--space-3);
+}
+
+.description {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ==================== VARIANTS ==================== */
+
+.variant-default .num {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.variant-default .title {
+  color: var(--color-text);
+}
+
+.variant-default .description {
+  color: var(--color-text-secondary);
+}
+
+.variant-dark .num {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-white);
+}
+
+.variant-dark .title {
+  color: var(--color-white);
+}
+
+.variant-dark .description {
+  color: var(--color-text-on-dark-muted);
+}
