@@ -19,6 +19,30 @@ import 'swiper/css/navigation'
 import styles from './page.module.css'
 import { MobileMenu } from '@/components/molecules'
 
+// Анимация маски — текст выезжает снизу
+const maskReveal = {
+  hidden: { y: '100%' },
+  visible: { 
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+  }
+}
+
+// Wrapper для маски
+const MaskText = ({ children, delay = 0, className = '' }) => (
+  <div style={{ overflow: 'hidden' }} className={className}>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-50px' }}
+      variants={maskReveal}
+      transition={{ delay }}
+    >
+      {children}
+    </motion.div>
+  </div>
+)
+
 // Контент из ТЗ
 const PROBLEMS = [
   {
@@ -150,20 +174,6 @@ const PORTFOLIO = [
   { title: 'Отель Люкс', image: '/images/portfolio-hotel.jpg' },
 ]
 
-// Animation variants
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 }
-}
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
-  }
-}
-
 export default function HomePage() {
   return (
     <div className={styles.pageWrapper}>
@@ -240,36 +250,20 @@ export default function HomePage() {
         <section className={styles.aboutSection} id="about">
           <div className={styles.sectionPadding}>
             <div className={styles.aboutContent}>
-              <motion.div 
-                className={styles.tag}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-              >
-                Добро пожаловать в MSL Clean
-              </motion.div>
-              <motion.h2 
-                className={styles.aboutTitle}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: 0.1 }}
-              >
-                Ваш надёжный партнёр в аутстафинге клинингового персонала
-              </motion.h2>
-              <motion.p 
-                className={styles.aboutText}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: 0.2 }}
-              >
-                Мы берём на себя подбор, контроль и управление сотрудниками, обеспечивая стабильную чистоту на вашем объекте.
-                Вы работаете, мы отвечаем за чистоту. Никаких звонков клинерам, никаких замен в спешке, никаких судебных проблем.
-              </motion.p>
+              <MaskText>
+                <div className={styles.tag}>Добро пожаловать в MSL Clean</div>
+              </MaskText>
+              <MaskText delay={0.1}>
+                <h2 className={styles.aboutTitle}>
+                  Ваш надёжный партнёр в аутстафинге клинингового персонала
+                </h2>
+              </MaskText>
+              <MaskText delay={0.2}>
+                <p className={styles.aboutText}>
+                  Мы берём на себя подбор, контроль и управление сотрудниками, обеспечивая стабильную чистоту на вашем объекте.
+                  Вы работаете, мы отвечаем за чистоту. Никаких звонков клинерам, никаких замен в спешке, никаких судебных проблем.
+                </p>
+              </MaskText>
             </div>
           </div>
         </section>
@@ -291,60 +285,32 @@ export default function HomePage() {
         <section className={styles.problemsSection} id="problems">
           <div className={styles.sectionPadding}>
             <div className={styles.sectionTop}>
-              <motion.div 
-                className={styles.tag}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-              >
-                Знакомо?
-              </motion.div>
-              <motion.h2 
-                className={styles.sectionTitle}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: 0.1 }}
-              >
-                Вам знакомо это?
-              </motion.h2>
-              <motion.p 
-                className={styles.sectionSubtitle}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: 0.2 }}
-              >
-                Это обходится вам дорого
-              </motion.p>
+              <MaskText>
+                <div className={styles.tag}>Знакомо?</div>
+              </MaskText>
+              <MaskText delay={0.1}>
+                <h2 className={styles.sectionTitle}>Вам знакомо это?</h2>
+              </MaskText>
+              <MaskText delay={0.2}>
+                <p className={styles.sectionSubtitle}>Это обходится вам дорого</p>
+              </MaskText>
             </div>
 
-            <motion.div 
-              className={styles.problemsGrid}
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {PROBLEMS.map((problem) => (
-                <motion.div 
-                  key={problem.num}
-                  className={styles.problemCard}
-                  variants={fadeInUp}
-                >
-                  <div className={styles.problemNum}>{problem.num}</div>
-                  <h3 className={styles.problemTitle}>{problem.title}</h3>
-                  <ul className={styles.problemList}>
-                    {problem.items.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                </motion.div>
+            <div className={styles.problemsGrid}>
+              {PROBLEMS.map((problem, index) => (
+                <MaskText key={problem.num} delay={0.1 * index}>
+                  <div className={styles.problemCard}>
+                    <div className={styles.problemNum}>{problem.num}</div>
+                    <h3 className={styles.problemTitle}>{problem.title}</h3>
+                    <ul className={styles.problemList}>
+                      {problem.items.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </MaskText>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -352,58 +318,32 @@ export default function HomePage() {
         <section className={styles.solutionSection} id="services">
           <div className={styles.sectionPadding}>
             <div className={styles.sectionTop}>
-              <motion.div 
-                className={styles.tag}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-              >
-                Решение
-              </motion.div>
-              <motion.h2 
-                className={styles.sectionTitle}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: 0.1 }}
-              >
-                Аутстафинг клинингового персонала
-              </motion.h2>
-              <motion.p 
-                className={styles.sectionSubtitle}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: 0.2 }}
-              >
-                Мы берём всю ответственность на себя
-              </motion.p>
+              <MaskText>
+                <div className={styles.tag}>Решение</div>
+              </MaskText>
+              <MaskText delay={0.1}>
+                <h2 className={styles.sectionTitle}>Аутстафинг клинингового персонала</h2>
+              </MaskText>
+              <MaskText delay={0.2}>
+                <p className={styles.sectionSubtitle}>Мы берём всю ответственность на себя</p>
+              </MaskText>
             </div>
 
             <div className={styles.solutionGrid}>
               {SOLUTIONS.map((solution, index) => (
-                <motion.div 
-                  key={solution.num}
-                  className={styles.solutionItem}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeInUp}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <div className={styles.solutionContent}>
-                    <div className={styles.solutionNum}>
-                      <span>{solution.num}</span>
+                <MaskText key={solution.num} delay={index * 0.1}>
+                  <div className={styles.solutionItem}>
+                    <div className={styles.solutionContent}>
+                      <div className={styles.solutionNum}>
+                        <span>{solution.num}</span>
+                      </div>
+                      <h3 className={styles.solutionTitle}>{solution.title}</h3>
+                      <p className={styles.solutionDesc}>{solution.desc}</p>
+                      <div className={styles.solutionHighlight}>{solution.highlight}</div>
                     </div>
-                    <h3 className={styles.solutionTitle}>{solution.title}</h3>
-                    <p className={styles.solutionDesc}>{solution.desc}</p>
-                    <div className={styles.solutionHighlight}>{solution.highlight}</div>
+                    <div className={styles.solutionLine} />
                   </div>
-                  <div className={styles.solutionLine} />
-                </motion.div>
+                </MaskText>
               ))}
             </div>
           </div>
@@ -413,51 +353,30 @@ export default function HomePage() {
         <section className={styles.uspSection}>
           <div className={styles.sectionPadding}>
             <div className={styles.sectionTop}>
-              <motion.div 
-                className={styles.tag}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-              >
-                Преимущества
-              </motion.div>
-              <motion.h2 
-                className={styles.sectionTitle}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: 0.1 }}
-              >
-                Почему выбирают нас
-              </motion.h2>
+              <MaskText>
+                <div className={styles.tag}>Преимущества</div>
+              </MaskText>
+              <MaskText delay={0.1}>
+                <h2 className={styles.sectionTitle}>Почему выбирают нас</h2>
+              </MaskText>
             </div>
 
-            <motion.div 
-              className={styles.uspGrid}
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
+            <div className={styles.uspGrid}>
               {USP.map((item, i) => {
                 const IconComponent = item.Icon
                 return (
-                  <motion.div 
-                    key={i}
-                    className={styles.uspCard}
-                    variants={fadeInUp}
-                  >
-                    <div className={styles.uspIcon}>
-                      <IconComponent size={28} strokeWidth={1.5} />
+                  <MaskText key={i} delay={i * 0.05}>
+                    <div className={styles.uspCard}>
+                      <div className={styles.uspIcon}>
+                        <IconComponent size={28} strokeWidth={1.5} />
+                      </div>
+                      <h3 className={styles.uspTitle}>{item.title}</h3>
+                      <p className={styles.uspDesc}>{item.desc}</p>
                     </div>
-                    <h3 className={styles.uspTitle}>{item.title}</h3>
-                    <p className={styles.uspDesc}>{item.desc}</p>
-                  </motion.div>
+                  </MaskText>
                 )
               })}
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -465,46 +384,25 @@ export default function HomePage() {
         <section className={styles.stepsSection}>
           <div className={styles.sectionPadding}>
             <div className={styles.sectionTop}>
-              <motion.div 
-                className={styles.tag}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-              >
-                Процесс
-              </motion.div>
-              <motion.h2 
-                className={styles.sectionTitle}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeInUp}
-                transition={{ delay: 0.1 }}
-              >
-                Как это работает? Всего 4 шага
-              </motion.h2>
+              <MaskText>
+                <div className={styles.tag}>Процесс</div>
+              </MaskText>
+              <MaskText delay={0.1}>
+                <h2 className={styles.sectionTitle}>Как это работает? Всего 4 шага</h2>
+              </MaskText>
             </div>
 
-            <motion.div 
-              className={styles.stepsGrid}
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {STEPS.map((step) => (
-                <motion.div 
-                  key={step.num}
-                  className={styles.stepCard}
-                  variants={fadeInUp}
-                >
-                  <div className={styles.stepNum}>{step.num}</div>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </motion.div>
+            <div className={styles.stepsGrid}>
+              {STEPS.map((step, index) => (
+                <MaskText key={step.num} delay={index * 0.1}>
+                  <div className={styles.stepCard}>
+                    <div className={styles.stepNum}>{step.num}</div>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepDesc}>{step.desc}</p>
+                  </div>
+                </MaskText>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -513,24 +411,12 @@ export default function HomePage() {
           <div className={styles.sectionPadding}>
             <div className={styles.portfolioTop}>
               <div className={styles.portfolioInfo}>
-                <motion.div 
-                  className={styles.tag}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeInUp}
-                >
-                  Клиенты
-                </motion.div>
-                <motion.h2 
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeInUp}
-                  transition={{ delay: 0.1 }}
-                >
-                  Наши объекты и проекты
-                </motion.h2>
+                <MaskText>
+                  <div className={styles.tag}>Клиенты</div>
+                </MaskText>
+                <MaskText delay={0.1}>
+                  <h2>Наши объекты и проекты</h2>
+                </MaskText>
               </div>
               <div className={styles.sliderArrows}>
                 <button className={`${styles.sliderArrow} swiper-prev`}>
