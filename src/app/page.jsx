@@ -18,8 +18,9 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import styles from './page.module.css'
 import { MobileMenu } from '@/components/molecules'
+import { SplitText } from '@/components/atoms'
 
-// Анимация маски — текст выезжает снизу (для коротких текстов)
+// Анимация маски — простая (для коротких однострочных текстов)
 const MaskText = ({ children, delay = 0, className = '' }) => (
   <div style={{ overflow: 'hidden' }} className={className}>
     <motion.div
@@ -256,17 +257,12 @@ export default function HomePage() {
               <MaskText>
                 <div className={styles.tag}>Добро пожаловать в MSL Clean</div>
               </MaskText>
-              <MaskText delay={0.1}>
-                <h2 className={styles.aboutTitle}>
-                  Ваш надёжный партнёр в аутстафинге клинингового персонала
-                </h2>
-              </MaskText>
-              <MaskText delay={0.2}>
-                <p className={styles.aboutText}>
-                  Мы берём на себя подбор, контроль и управление сотрудниками, обеспечивая стабильную чистоту на вашем объекте.
-                  Вы работаете, мы отвечаем за чистоту. Никаких звонков клинерам, никаких замен в спешке, никаких судебных проблем.
-                </p>
-              </MaskText>
+              <SplitText as="h2" className={styles.aboutTitle} delay={0.1}>
+                Ваш надёжный партнёр в аутстафинге клинингового персонала
+              </SplitText>
+              <SplitText as="p" className={styles.aboutText} delay={0.3}>
+                Мы берём на себя подбор, контроль и управление сотрудниками, обеспечивая стабильную чистоту на вашем объекте. Вы работаете, мы отвечаем за чистоту. Никаких звонков клинерам, никаких замен в спешке, никаких судебных проблем.
+              </SplitText>
             </div>
           </div>
         </section>

@@ -1,0 +1,23 @@
+/* Скрытый контейнер для измерения */
+.measure {
+  position: absolute !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  white-space: normal;
+}
+
+/* Видимый контейнер */
+.container {
+  display: block;
+}
+
+/* Обёртка строки — маска */
+.lineWrapper {
+  display: block;
+  overflow: hidden;
+}
+
+/* Строка — анимируется */
+.line {
+  display: block;
+}
