@@ -19,28 +19,31 @@ import 'swiper/css/navigation'
 import styles from './page.module.css'
 import { MobileMenu } from '@/components/molecules'
 
-// Анимация маски — текст выезжает снизу
-const maskReveal = {
-  hidden: { y: '100%' },
-  visible: { 
-    y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
-  }
-}
-
-// Wrapper для маски
+// Анимация маски — текст выезжает снизу (для коротких текстов)
 const MaskText = ({ children, delay = 0, className = '' }) => (
   <div style={{ overflow: 'hidden' }} className={className}>
     <motion.div
-      initial="hidden"
-      whileInView="visible"
+      initial={{ y: '100%' }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      variants={maskReveal}
-      transition={{ delay }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay }}
     >
       {children}
     </motion.div>
   </div>
+)
+
+// Анимация для карточек — fade + slide up
+const CardReveal = ({ children, delay = 0, className = '' }) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: '-50px' }}
+    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay }}
+  >
+    {children}
+  </motion.div>
 )
 
 // Контент из ТЗ
@@ -298,7 +301,7 @@ export default function HomePage() {
 
             <div className={styles.problemsGrid}>
               {PROBLEMS.map((problem, index) => (
-                <MaskText key={problem.num} delay={0.1 * index}>
+                <CardReveal key={problem.num} delay={0.1 * index}>
                   <div className={styles.problemCard}>
                     <div className={styles.problemNum}>{problem.num}</div>
                     <h3 className={styles.problemTitle}>{problem.title}</h3>
@@ -308,7 +311,7 @@ export default function HomePage() {
                       ))}
                     </ul>
                   </div>
-                </MaskText>
+                </CardReveal>
               ))}
             </div>
           </div>
@@ -331,7 +334,7 @@ export default function HomePage() {
 
             <div className={styles.solutionGrid}>
               {SOLUTIONS.map((solution, index) => (
-                <MaskText key={solution.num} delay={index * 0.1}>
+                <CardReveal key={solution.num} delay={index * 0.1}>
                   <div className={styles.solutionItem}>
                     <div className={styles.solutionContent}>
                       <div className={styles.solutionNum}>
@@ -343,7 +346,7 @@ export default function HomePage() {
                     </div>
                     <div className={styles.solutionLine} />
                   </div>
-                </MaskText>
+                </CardReveal>
               ))}
             </div>
           </div>
@@ -365,7 +368,7 @@ export default function HomePage() {
               {USP.map((item, i) => {
                 const IconComponent = item.Icon
                 return (
-                  <MaskText key={i} delay={i * 0.05}>
+                  <CardReveal key={i} delay={i * 0.05}>
                     <div className={styles.uspCard}>
                       <div className={styles.uspIcon}>
                         <IconComponent size={28} strokeWidth={1.5} />
@@ -373,7 +376,7 @@ export default function HomePage() {
                       <h3 className={styles.uspTitle}>{item.title}</h3>
                       <p className={styles.uspDesc}>{item.desc}</p>
                     </div>
-                  </MaskText>
+                  </CardReveal>
                 )
               })}
             </div>
@@ -394,13 +397,13 @@ export default function HomePage() {
 
             <div className={styles.stepsGrid}>
               {STEPS.map((step, index) => (
-                <MaskText key={step.num} delay={index * 0.1}>
+                <CardReveal key={step.num} delay={index * 0.1}>
                   <div className={styles.stepCard}>
                     <div className={styles.stepNum}>{step.num}</div>
                     <h3 className={styles.stepTitle}>{step.title}</h3>
                     <p className={styles.stepDesc}>{step.desc}</p>
                   </div>
-                </MaskText>
+                </CardReveal>
               ))}
             </div>
           </div>
