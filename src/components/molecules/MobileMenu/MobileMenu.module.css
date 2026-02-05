@@ -1,51 +1,29 @@
 /* =====================================================
-   MobileMenu — Кнопка с текстом + Панель снизу
-   Современный стиль без "взрыва"
+   MobileMenu — Бургер в шапке + Панель справа
+   По дизайну AI Academy (Figma)
    ===================================================== */
 
-/* Кнопка с текстом — pill shape */
-.floatingButton {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  
-  /* Pill shape с текстом */
+/* Бургер кнопка — в шапке справа */
+.burgerButton {
   display: none;
   align-items: center;
-  gap: 10px;
-  padding: 14px 24px;
-  border-radius: 50px;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
   border: none;
-  
-  background: var(--color-primary);
-  box-shadow: 
-    0 4px 20px rgba(31, 88, 102, 0.4),
-    0 8px 32px rgba(31, 88, 102, 0.2);
-  
+  background: transparent;
   cursor: pointer;
-  
-  /* Subtle border */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (max-width: 1023px) {
-  .floatingButton {
+@media (max-width: 991px) {
+  .burgerButton {
     display: flex;
   }
 }
 
-/* Текст на кнопке */
-.buttonLabel {
-  color: white;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-/* Burger Icon */
+/* Burger Icon — 3 линии */
 .burgerIcon {
   display: flex;
   flex-direction: column;
@@ -54,166 +32,158 @@
   gap: 5px;
   width: 20px;
   height: 20px;
+  position: relative;
 }
 
 .burgerLine {
   display: block;
-  width: 18px;
-  height: 2px;
-  background: white;
-  border-radius: 2px;
+  width: 20px;
+  height: 1.5px;
+  background: var(--color-text);
+  border-radius: 1px;
+  transition: all 0.3s ease;
   transform-origin: center;
 }
 
-/* Backdrop — затемнение фона */
+/* Burger → X анимация */
+.burgerIcon.open .burgerLine:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.burgerIcon.open .burgerLine:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.burgerIcon.open .burgerLine:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Backdrop */
 .backdrop {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 998;
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  
-  /* Только на мобильных */
-  display: none;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 991px) {
   .backdrop {
     display: block;
   }
 }
 
-/* Панель меню — снизу с закруглёнными углами */
+/* Панель меню — справа, fullheight */
 .menuPanel {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  
-  background: var(--color-primary);
-  
-  border-radius: 24px 24px 0 0;
-  
-  /* Тень сверху */
-  box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.3);
-  
-  /* Safe area для notch/home indicator */
-  padding-bottom: env(safe-area-inset-bottom, 24px);
-  
-  /* Только на мобильных */
   display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 320px;
+  z-index: 999;
+  background: white;
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.15);
+  padding: 80px 24px 40px;
+  overflow-y: auto;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 991px) {
   .menuPanel {
     display: block;
   }
+}
+
+/* Кнопка закрыть */
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: opacity 0.2s;
+}
+
+.closeButton:hover {
+  opacity: 0.6;
 }
 
 /* Menu Content */
 .menuContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  padding: 40px 24px 100px;
-  width: 100%;
-}
-
-/* Ручка для drag */
-.menuPanel::before {
-  content: '';
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
+  gap: 8px;
 }
 
 /* Menu Link */
 .menuLink {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  display: block;
+  padding: 12px 0;
   text-decoration: none;
-  color: white;
-  font-size: 1.375rem;
+  color: var(--color-text);
+  font-size: 1.125rem;
   font-weight: 500;
-  letter-spacing: 0.01em;
-  width: 100%;
-  max-width: 300px;
-  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border, #eee);
+  transition: color 0.2s;
 }
 
-.menuNumber {
-  font-size: 0.8125rem;
-  opacity: 0.4;
-  font-weight: 400;
-  font-family: var(--font-family);
-  min-width: 24px;
+.menuLink:hover {
+  color: var(--color-primary);
 }
 
-.menuLabel {
-  position: relative;
+.menuLink:last-of-type {
+  border-bottom: none;
 }
 
-/* Hover underline effect */
-.menuLabel::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-secondary);
-  transition: width 0.3s ease;
-}
-
-.menuLink:hover .menuLabel::after {
-  width: 100%;
-}
-
-/* CTA Button в меню */
+/* CTA Button */
 .menuCta {
-  margin-top: 16px;
-  padding: 16px 40px;
+  margin-top: 24px;
+  padding: 14px 28px;
   border-radius: 50px;
-  background: var(--color-secondary);
+  background: var(--color-primary);
   color: white;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(97, 197, 102, 0.4);
-  transition: all 0.3s ease;
+  text-align: center;
+  transition: background 0.3s;
 }
 
 .menuCta:hover {
-  background: var(--color-secondary-dark);
-  box-shadow: 0 6px 24px rgba(97, 197, 102, 0.5);
+  background: var(--color-primary-dark);
 }
 
-/* Phone в меню */
+/* Phone */
 .menuPhone {
-  margin-top: 8px;
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 4px;
 }
 
 .menuPhone a {
-  color: white;
+  color: var(--color-text);
   font-size: 1.125rem;
   font-weight: 600;
   text-decoration: none;
 }
 
+.menuPhone a:hover {
+  color: var(--color-primary);
+}
+
 .menuPhone span {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-text-muted, #888);
   font-size: 0.8125rem;
 }

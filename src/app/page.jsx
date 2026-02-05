@@ -17,6 +17,7 @@ import {
 import 'swiper/css'
 import 'swiper/css/navigation'
 import styles from './page.module.css'
+import { MobileMenu } from '@/components/molecules'
 
 // Контент из ТЗ
 const PROBLEMS = [
@@ -187,6 +188,7 @@ export default function HomePage() {
               <Link href="#contact" className={styles.navButton}>
                 Получить расчёт
               </Link>
+              <MobileMenu />
             </div>
           </div>
         </nav>

@@ -5,15 +5,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 import styles from './MobileMenu.module.css'
 
 const NAV_ITEMS = [
-  { href: '#problems', label: 'Проблемы' },
-  { href: '#solution', label: 'Решение' },
-  { href: '#usp', label: 'Преимущества' },
-  { href: '#how-it-works', label: 'Как работаем' },
+  { href: '#about', label: 'О компании' },
+  { href: '#services', label: 'Услуги' },
+  { href: '#portfolio', label: 'Клиенты' },
   { href: '#contact', label: 'Контакты' },
 ]
 
 /**
- * MobileMenu — современная кнопка с текстом + плавное появление меню
+ * MobileMenu — бургер в шапке + fullscreen меню
+ * По дизайну AI Academy (Figma)
  */
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,19 +21,17 @@ export default function MobileMenu() {
   const toggleMenu = () => setIsOpen(!isOpen)
   const closeMenu = () => setIsOpen(false)
 
-  // Плавное появление панели снизу вверх
+  // Панель меню — slide from right
   const menuVariants = {
     closed: {
-      opacity: 0,
-      y: '100%',
+      x: '100%',
       transition: {
         duration: 0.3,
         ease: [0.4, 0, 0.2, 1],
       }
     },
     open: {
-      opacity: 1,
-      y: 0,
+      x: 0,
       transition: {
         duration: 0.4,
         ease: [0.4, 0, 0.2, 1],
@@ -41,7 +39,7 @@ export default function MobileMenu() {
     }
   }
 
-  // Stagger анимация для пунктов меню — построчно
+  // Stagger для пунктов
   const containerVariants = {
     closed: {
       transition: {
@@ -51,15 +49,15 @@ export default function MobileMenu() {
     },
     open: {
       transition: {
-        delayChildren: 0.15,
-        staggerChildren: 0.06
+        delayChildren: 0.2,
+        staggerChildren: 0.08
       }
     }
   }
 
   const itemVariants = {
     closed: {
-      y: 30,
+      y: 20,
       opacity: 0,
     },
     open: {
@@ -72,56 +70,23 @@ export default function MobileMenu() {
     }
   }
 
-  // Анимация линий бургера
-  const topLineVariants = {
-    closed: { rotate: 0, y: 0 },
-    open: { rotate: 45, y: 6 }
-  }
-
-  const middleLineVariants = {
-    closed: { opacity: 1, scaleX: 1 },
-    open: { opacity: 0, scaleX: 0 }
-  }
-
-  const bottomLineVariants = {
-    closed: { rotate: 0, y: 0 },
-    open: { rotate: -45, y: -6 }
-  }
-
   return (
     <>
-      {/* Кнопка с текстом "Меню" */}
-      <motion.button
-        className={styles.floatingButton}
+      {/* Бургер кнопка в шапке */}
+      <button
+        className={styles.burgerButton}
         onClick={toggleMenu}
-        animate={isOpen ? 'open' : 'closed'}
-        whileTap={{ scale: 0.95 }}
         aria-label={isOpen ? 'Закрыть меню' : 'Открыть меню'}
         aria-expanded={isOpen}
       >
-        <div className={styles.burgerIcon}>
-          <motion.span
-            className={styles.burgerLine}
-            variants={topLineVariants}
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            className={styles.burgerLine}
-            variants={middleLineVariants}
-            transition={{ duration: 0.2 }}
-          />
-          <motion.span
-            className={styles.burgerLine}
-            variants={bottomLineVariants}
-            transition={{ duration: 0.3 }}
-          />
+        <div className={`${styles.burgerIcon} ${isOpen ? styles.open : ''}`}>
+          <span className={styles.burgerLine} />
+          <span className={styles.burgerLine} />
+          <span className={styles.burgerLine} />
         </div>
-        <span className={styles.buttonLabel}>
-          {isOpen ? 'Закрыть' : 'Меню'}
-        </span>
-      </motion.button>
+      </button>
 
-      {/* Fullscreen меню — панель снизу */}
+      {/* Fullscreen меню */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -135,7 +100,7 @@ export default function MobileMenu() {
               onClick={closeMenu}
             />
             
-            {/* Панель меню */}
+            {/* Панель меню справа */}
             <motion.div
               className={styles.menuPanel}
               initial="closed"
@@ -143,6 +108,13 @@ export default function MobileMenu() {
               exit="closed"
               variants={menuVariants}
             >
+              {/* Закрыть */}
+              <button className={styles.closeButton} onClick={closeMenu}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+
               <motion.nav
                 className={styles.menuContent}
                 variants={containerVariants}
@@ -150,36 +122,31 @@ export default function MobileMenu() {
                 animate="open"
                 exit="closed"
               >
-                {NAV_ITEMS.map((item, index) => (
+                {NAV_ITEMS.map((item) => (
                   <motion.a
                     key={item.href}
                     href={item.href}
                     className={styles.menuLink}
                     variants={itemVariants}
                     onClick={closeMenu}
-                    whileHover={{ x: 10, color: 'var(--color-secondary)' }}
-                    whileTap={{ scale: 0.98 }}
                   >
-                    <span className={styles.menuNumber}>0{index + 1}</span>
-                    <span className={styles.menuLabel}>{item.label}</span>
+                    {item.label}
                   </motion.a>
                 ))}
                 
-                {/* Кнопка CTA в меню */}
+                {/* CTA */}
                 <motion.a
                   href="#contact"
                   className={styles.menuCta}
                   variants={itemVariants}
                   onClick={closeMenu}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   Получить расчёт
                 </motion.a>
                 
                 {/* Телефон */}
                 <motion.div className={styles.menuPhone} variants={itemVariants}>
-                  <a href="tel:+78001234567">+7 (800) 123-45-67</a>
+                  <a href="tel:+79999999999">+7 (999) 999-99-99</a>
                   <span>Работаем 24/7</span>
                 </motion.div>
               </motion.nav>

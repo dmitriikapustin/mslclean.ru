@@ -1057,7 +1057,7 @@
 /* ===================== RESPONSIVE - MOBILE ===================== */
 @media (max-width: 767px) {
   .navbarInner {
-    padding: 1rem;
+    padding: 0 20px;
   }
 
   .navButton {
@@ -1066,7 +1066,7 @@
   }
 
   .heroPadding {
-    padding: 1rem;
+    padding: 20px;
   }
 
   .heroTitle {
@@ -1078,7 +1078,7 @@
   }
 
   .sectionPadding {
-    padding: 4rem 1rem;
+    padding: 4rem 20px;
   }
 
   .problemsGrid {
