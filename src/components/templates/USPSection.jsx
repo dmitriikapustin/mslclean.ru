@@ -47,7 +47,7 @@ export default function USPSection() {
     <section className={styles.section} id="usp">
       <Container>
         <AnimatedSection className={styles.header}>
-          <Tag variant="muted">Преимущества</Tag>
+          <Tag variant="outlined">Преимущества</Tag>
           <h2>Почему выбирают нас</h2>
         </AnimatedSection>
         

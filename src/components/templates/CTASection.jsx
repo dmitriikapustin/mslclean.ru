@@ -14,7 +14,7 @@ export default function CTASection() {
     <section className={styles.section} id="contact">
       <Container className={styles.inner}>
         <div className={styles.content}>
-          <Tag variant="muted">Связаться с нами</Tag>
+          <Tag variant="outlined">Связаться с нами</Tag>
           <h2>Давайте составим план действий</h2>
           <p className={styles.text}>
             Оставьте заявку, и мы свяжемся с вами в течение 10 минут. 

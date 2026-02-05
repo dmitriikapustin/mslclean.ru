@@ -43,7 +43,7 @@ export default function SolutionSection() {
     <section className={styles.section} id="solution">
       <Container className={styles.inner}>
         <div className={styles.content}>
-          <Tag variant="muted">Наше решение</Tag>
+          <Tag variant="outlined">Наше решение</Tag>
           <h2>Аутстафинг клинингового персонала</h2>
           <p className={styles.lead}>
             Вы работаете — мы отвечаем за чистоту. Никаких звонков клинерам, 

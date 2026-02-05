@@ -58,7 +58,7 @@ export default function HowItWorksSection() {
     <section className={styles.section} id="how-it-works">
       <Container>
         <AnimatedSection className={styles.header}>
-          <Tag>Процесс</Tag>
+          <Tag variant="outlined">Процесс</Tag>
           <h2>Как это работает? Всего 4 шага</h2>
           <p className={styles.subtitle}>
             Простой процесс — быстрый результат

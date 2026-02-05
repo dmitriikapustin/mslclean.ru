@@ -52,7 +52,7 @@ export default function ProblemsSection() {
     <section className={styles.section} id="problems">
       <Container>
         <div className={styles.header}>
-          <Tag variant="muted">Знакомые проблемы?</Tag>
+          <Tag variant="outlined">Знакомые проблемы?</Tag>
           <h2>Вам знакомо это?</h2>
           <p className={styles.subtitle}>
             Это обходится вам дорого — временем, нервами и репутацией

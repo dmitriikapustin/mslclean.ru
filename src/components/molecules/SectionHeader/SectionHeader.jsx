@@ -40,7 +40,7 @@ export default function SectionHeader({
   return (
     <div className={classes} {...props}>
       {tag && (
-        <Tag variant={variant === 'dark' ? 'white' : 'default'}>
+        <Tag variant={variant === 'dark' ? 'white' : 'outlined'}>
           {tag}
         </Tag>
       )}
