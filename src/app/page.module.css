@@ -357,20 +357,37 @@
 }
 
 .solutionGrid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 
 .solutionItem {
   position: relative;
   padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.solutionImageWrapper {
+  width: 50%;
+  max-width: 180px;
+  margin-bottom: 1.5rem;
+}
+
+.solutionImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .solutionContent {
-  display: grid;
-  grid-template-columns: auto 1fr 2fr auto;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
 
 .solutionNum {
@@ -989,26 +1006,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .solutionContent {
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-    gap: 1rem;
+  .solutionGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
-  .solutionTitle {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .solutionDesc {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
-
-  .solutionHighlight {
-    grid-column: 1 / -1;
-    grid-row: 3;
-    justify-self: start;
+  .solutionImageWrapper {
+    width: 60%;
+    max-width: 150px;
   }
 
   .uspGrid {
@@ -1061,6 +1066,20 @@
 
   .problemsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .solutionGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .solutionImageWrapper {
+    width: 50%;
+    max-width: 120px;
+  }
+
+  .solutionItem {
+    padding: 1rem 0;
   }
 
   .uspGrid {

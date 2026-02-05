@@ -79,24 +79,28 @@ const SOLUTIONS = [
     title: 'Готовый персонал 24/7',
     desc: 'Мы подбираем персонал по 7 параметрам: опыт, документы, навыки, рекомендации, адаптивность, устойчивость к нагрузкам, ответственность',
     highlight: 'Готовый сотрудник за 24-48 часов',
+    image: '/images/solution-staff.png',
   },
   {
     num: 2,
     title: 'Замена без остановки',
     desc: 'Заболел — мы пришлем замену той же смены. Контроль 24/7.',
     highlight: 'Гарантия непрерывности работы',
+    image: '/images/solution-replacement.png',
   },
   {
     num: 3,
     title: 'Юридическое оформление',
     desc: 'Договор, безналичная оплата, фиксированная цена. Вы не отвечаете перед законом за клинера — мы отвечаем.',
     highlight: 'Экономия на ФОТ, налогах, ПФР',
+    image: '/images/solution-legal.png',
   },
   {
     num: 4,
     title: 'Контроль качества',
     desc: 'Каждый объект сопровождает менеджер. Если не нравится — замена в течение дня.',
     highlight: 'Персональный менеджер объекта',
+    image: '/images/solution-quality.png',
   },
 ]
 
@@ -301,6 +305,15 @@ export default function HomePage() {
               {SOLUTIONS.map((solution, index) => (
                 <CardReveal key={solution.num} delay={index * 0.1}>
                   <div className={styles.solutionItem}>
+                    <div className={styles.solutionImageWrapper}>
+                      <Image 
+                        src={solution.image}
+                        alt={solution.title}
+                        width={200}
+                        height={200}
+                        className={styles.solutionImage}
+                      />
+                    </div>
                     <div className={styles.solutionContent}>
                       <div className={styles.solutionNum}>
                         <span>{solution.num}</span>
