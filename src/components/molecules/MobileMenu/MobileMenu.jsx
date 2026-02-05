@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './MobileMenu.module.css'
 
@@ -12,7 +12,7 @@ const NAV_ITEMS = [
 ]
 
 /**
- * MobileMenu — Fullscreen меню с анимацией сверху вниз
+ * MobileMenu — Fullscreen белое меню
  */
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,56 +20,45 @@ export default function MobileMenu() {
   const toggleMenu = () => setIsOpen(!isOpen)
   const closeMenu = () => setIsOpen(false)
 
-  // Фон — появляется сверху вниз (clip-path)
-  const backgroundVariants = {
-    closed: {
-      clipPath: 'inset(0 0 100% 0)',
-      transition: {
-        duration: 0.5,
-        ease: [0.76, 0, 0.24, 1],
-        delay: 0.2,
-      }
-    },
-    open: {
-      clipPath: 'inset(0 0 0% 0)',
-      transition: {
-        duration: 0.6,
-        ease: [0.76, 0, 0.24, 1],
-      }
+  // Блокируем скролл при открытом меню
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
     }
-  }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   // Контейнер для stagger
   const containerVariants = {
     closed: {
       transition: {
-        staggerChildren: 0.05,
+        staggerChildren: 0.03,
         staggerDirection: -1,
       }
     },
     open: {
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.08,
+        delayChildren: 0.1,
+        staggerChildren: 0.06,
       }
     }
   }
 
-  // Пункты меню — появляются снизу с fade
+  // Пункты меню
   const itemVariants = {
     closed: {
-      y: 40,
+      y: 30,
       opacity: 0,
-      transition: {
-        duration: 0.3,
-        ease: [0.76, 0, 0.24, 1],
-      }
     },
     open: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.4,
         ease: [0.22, 1, 0.36, 1],
       }
     }
@@ -96,10 +85,10 @@ export default function MobileMenu() {
         {isOpen && (
           <motion.div
             className={styles.menuOverlay}
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={backgroundVariants}
+            initial={{ opacity: 0, y: '-100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '-100%' }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Контент меню */}
             <motion.nav
@@ -109,10 +98,17 @@ export default function MobileMenu() {
               animate="open"
               exit="closed"
             >
-              {/* Лого */}
-              <motion.div className={styles.menuLogo} variants={itemVariants}>
-                MSL<span>Clean</span>
-              </motion.div>
+              {/* Шапка с лого и крестиком */}
+              <div className={styles.menuHeader}>
+                <motion.div className={styles.menuLogo} variants={itemVariants}>
+                  MSL<span>Clean</span>
+                </motion.div>
+                <button className={styles.closeButton} onClick={closeMenu}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
 
               {/* Навигация */}
               <div className={styles.menuNav}>
@@ -123,8 +119,6 @@ export default function MobileMenu() {
                     className={styles.menuLink}
                     variants={itemVariants}
                     onClick={closeMenu}
-                    whileHover={{ x: 10 }}
-                    transition={{ duration: 0.2 }}
                   >
                     <span className={styles.menuNumber}>0{index + 1}</span>
                     <span className={styles.menuLabel}>{item.label}</span>
@@ -138,8 +132,6 @@ export default function MobileMenu() {
                 className={styles.menuCta}
                 variants={itemVariants}
                 onClick={closeMenu}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
               >
                 Получить расчёт
               </motion.a>
