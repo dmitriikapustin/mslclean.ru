@@ -1,25 +1,10 @@
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 1.5rem;
-  font-weight: 600;
   text-decoration: none;
-  font-family: var(--font-serif);
 }
 
-.mark {
-  color: var(--accent);
-}
-
-.dark .text {
-  color: var(--primary);
-}
-
-.light .text {
-  color: white;
-}
-
-.light .mark {
-  color: var(--accent);
+.logo img {
+  height: 39px;
+  width: auto;
 }
