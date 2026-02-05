@@ -31,7 +31,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <Container className={styles.inner}>
         <div className={styles.brand}>
-          <Logo variant="light" />
+          <Logo />
           <p className={styles.description}>
             Аутстафинг клинингового персонала с гарантией качества, 
             контролем и заменой. Фиксированная цена, договор, безналичная оплата.
