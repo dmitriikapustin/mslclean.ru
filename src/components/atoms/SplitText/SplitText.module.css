@@ -1,23 +1,16 @@
-/* Контейнер для измерения (скрытый) */
-.measuring {
-  visibility: hidden;
-}
-
-/* Контейнер анимации */
+/* Контейнер */
 .container {
-  display: block;
+  display: inline;
 }
 
-/* Обёртка строки — маска */
-.lineWrapper {
-  display: block;
+/* Обёртка слова — маска */
+.wordWrapper {
+  display: inline-block;
   overflow: hidden;
-  /* Небольшой padding снизу чтобы не обрезало буквы типа g, y */
-  padding-bottom: 0.1em;
-  margin-bottom: -0.1em;
+  vertical-align: bottom;
 }
 
-/* Строка — анимируется */
-.line {
-  display: block;
+/* Слово */
+.word {
+  display: inline-block;
 }
