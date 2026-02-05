@@ -27,7 +27,7 @@ export default function Logo({
         src={logoSrc}
         alt="MSL Clean"
         width={170}
-        height={39}
+        height={47}
         priority
       />
     </Link>
