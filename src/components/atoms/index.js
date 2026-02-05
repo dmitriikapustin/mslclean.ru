@@ -4,6 +4,7 @@ export { default as Container } from './Container'
 export { default as Tag } from './Tag'
 export { default as TextReveal } from './TextReveal'
 export { default as SplitText } from './SplitText'
+export { default as AnimatedTag } from './AnimatedTag'
 
 // Legacy exports (для обратной совместимости)
 export { default as Input } from './Input'

@@ -18,7 +18,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import styles from './page.module.css'
 import { MobileMenu } from '@/components/molecules'
-import { SplitText } from '@/components/atoms'
+import { SplitText, AnimatedTag } from '@/components/atoms'
 
 // Анимация для карточек — fade + slide up
 const CardReveal = ({ children, delay = 0, className = '' }) => (
@@ -237,7 +237,7 @@ export default function HomePage() {
         <section className={styles.aboutSection} id="about">
           <div className={styles.sectionPadding}>
             <div className={styles.aboutContent}>
-              <SplitText className={styles.tag}>Добро пожаловать в MSL Clean</SplitText>
+              <AnimatedTag>Добро пожаловать в MSL Clean</AnimatedTag>
               <SplitText as="h2" className={styles.aboutTitle} delay={0.1}>
                 Ваш надёжный партнёр в аутстафинге клинингового персонала
               </SplitText>
@@ -265,7 +265,7 @@ export default function HomePage() {
         <section className={styles.problemsSection} id="problems">
           <div className={styles.sectionPadding}>
             <div className={styles.sectionTop}>
-              <SplitText className={styles.tag}>Знакомо?</SplitText>
+              <AnimatedTag>Знакомо?</AnimatedTag>
               <SplitText as="h2" className={styles.sectionTitle} delay={0.1}>Вам знакомо это?</SplitText>
               <SplitText as="p" className={styles.sectionSubtitle} delay={0.2}>Это обходится вам дорого</SplitText>
             </div>
@@ -292,7 +292,7 @@ export default function HomePage() {
         <section className={styles.solutionSection} id="services">
           <div className={styles.sectionPadding}>
             <div className={styles.sectionTop}>
-              <SplitText className={styles.tag}>Решение</SplitText>
+              <AnimatedTag>Решение</AnimatedTag>
               <SplitText as="h2" className={styles.sectionTitle} delay={0.1}>Аутстафинг клинингового персонала</SplitText>
               <SplitText as="p" className={styles.sectionSubtitle} delay={0.2}>Мы берём всю ответственность на себя</SplitText>
             </div>
@@ -321,7 +321,7 @@ export default function HomePage() {
         <section className={styles.uspSection}>
           <div className={styles.sectionPadding}>
             <div className={styles.sectionTop}>
-              <SplitText className={styles.tag}>Преимущества</SplitText>
+              <AnimatedTag>Преимущества</AnimatedTag>
               <SplitText as="h2" className={styles.sectionTitle} delay={0.1}>Почему выбирают нас</SplitText>
             </div>
 
@@ -348,7 +348,7 @@ export default function HomePage() {
         <section className={styles.stepsSection}>
           <div className={styles.sectionPadding}>
             <div className={styles.sectionTop}>
-              <SplitText className={styles.tag}>Процесс</SplitText>
+              <AnimatedTag>Процесс</AnimatedTag>
               <SplitText as="h2" className={styles.sectionTitle} delay={0.1}>Как это работает? Всего 4 шага</SplitText>
             </div>
 
@@ -371,7 +371,7 @@ export default function HomePage() {
           <div className={styles.sectionPadding}>
             <div className={styles.portfolioTop}>
               <div className={styles.portfolioInfo}>
-                <SplitText className={styles.tag}>Клиенты</SplitText>
+                <AnimatedTag>Клиенты</AnimatedTag>
                 <SplitText as="h2" delay={0.1}>Наши объекты и проекты</SplitText>
               </div>
               <div className={styles.sliderArrows}>
