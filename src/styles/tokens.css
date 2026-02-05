@@ -18,10 +18,10 @@
   --color-secondary-dark: #4ea854;
   --color-secondary-light: #e8f5e9;
   
-  /* Accent — внимание/предупреждение */
-  --color-accent: #ff7043;
-  --color-accent-dark: #e65100;
-  --color-accent-light: #fef3f0;
+  /* Accent — светлый циан */
+  --color-accent: #5bbcc7;
+  --color-accent-dark: #3a9ca6;
+  --color-accent-light: #e8f7f9;
   
   /* Neutrals */
   --color-white: #ffffff;

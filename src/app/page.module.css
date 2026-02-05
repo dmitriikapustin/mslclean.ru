@@ -307,7 +307,7 @@
 }
 
 .problemCard {
-  background: #fef3f0;
+  background: var(--color-accent-light);
   border-radius: var(--radius-main);
   padding: 2rem;
   position: relative;
