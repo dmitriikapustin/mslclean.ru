@@ -28,7 +28,6 @@ export const metadata = {
     'msapplication-TileColor': '#1F5866',
     'msapplication-config': '/browserconfig.xml',
   },
-  themeColor: '#1F5866',
   openGraph: {
     title: 'MSL Clean — Аутстафинг клинингового персонала',
     description: 'Чистота без управленческих забот. Готовый персонал за 24 часа.',
@@ -36,6 +35,10 @@ export const metadata = {
     url: 'https://mslclean.ru',
     siteName: 'MSL Clean',
   },
+}
+
+export const viewport = {
+  themeColor: '#1F5866',
 }
 
 export default function RootLayout({ children }) {

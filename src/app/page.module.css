@@ -281,6 +281,11 @@
   overflow: hidden;
 }
 
+.bannerInner {
+  position: absolute;
+  inset: 0;
+}
+
 .bannerBkg {
   position: absolute;
   inset: 0;

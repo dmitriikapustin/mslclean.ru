@@ -258,23 +258,25 @@ export default function HomePage() {
         </section>
 
         {/* ===================== BANNER ===================== */}
-        <motion.section 
-          className={styles.bannerSection}
-          initial={{ clipPath: 'inset(100% 0 0 0)' }}
-          whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className={styles.bannerBkg}>
-            <Image 
-              src="/images/banner-kitchen.jpg"
-              alt="Команда клининга за работой в ресторане"
-              fill
-              className={styles.bannerImage}
-            />
-            <div className={styles.bannerOverlay} />
-          </div>
-        </motion.section>
+        <section className={styles.bannerSection}>
+          <motion.div 
+            className={styles.bannerInner}
+            initial={{ opacity: 0, scale: 1.1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '100px' }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className={styles.bannerBkg}>
+              <Image 
+                src="/images/banner-kitchen.jpg"
+                alt="Команда клининга за работой в ресторане"
+                fill
+                className={styles.bannerImage}
+              />
+              <div className={styles.bannerOverlay} />
+            </div>
+          </motion.div>
+        </section>
 
         {/* ===================== PROBLEMS ===================== */}
         <section className={styles.problemsSection} id="problems">
