@@ -20,6 +20,7 @@ import styles from './page.module.css'
 import { MobileMenu } from '@/components/molecules'
 import { Logo } from '@/components/atoms'
 import { SplitText, AnimatedTag } from '@/components/atoms'
+import CookieBanner from '@/components/organisms/CookieBanner'
 
 // Анимация для карточек — fade + slide up
 const CardReveal = ({ children, delay = 0, className = '' }) => (
@@ -464,12 +465,13 @@ export default function HomePage() {
                       <label>Расскажите о вашем объекте</label>
                       <textarea placeholder="Тип объекта, площадь, количество персонала..." rows={4} />
                     </div>
+                    <label className={styles.checkbox}>
+                      <input type="checkbox" required />
+                      <span>Я согласен с <Link href="/privacy-policy" className={styles.checkboxLink}>Политикой обработки персональных данных</Link></span>
+                    </label>
                     <button type="submit" className={styles.button}>
                       Получить расчёт
                     </button>
-                    <p className={styles.formHint}>
-                      Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-                    </p>
                   </form>
                 </div>
               </div>
@@ -535,13 +537,14 @@ export default function HomePage() {
 
               {/* Bottom */}
               <div className={styles.footerBottom}>
-                <a href="#" className={styles.footerPolicy}>Политика конфиденциальности</a>
-                <span className={styles.footerCopyright}>MSL Clean © 2025. Все права защищены</span>
+                <Link href="/privacy-policy" className={styles.footerPolicy}>Политика обработки персональных данных</Link>
+                <span className={styles.footerCopyright}>ИП Маслов Е.О. ИНН 631704563230 | MSL Clean © 2025</span>
               </div>
             </div>
           </footer>
         </section>
       </div>
+      <CookieBanner />
     </div>
   )
 }
