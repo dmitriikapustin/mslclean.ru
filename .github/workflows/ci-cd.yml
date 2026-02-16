@@ -84,12 +84,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: 🚀 Deploy to Coolify
-        if: github.ref == 'refs/heads/main'
-        run: |
-          curl -s -X GET "${{ secrets.COOLIFY_WEBHOOK }}" \
-            -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
-
       - name: 📦 Summary
         run: |
           echo "### 🐳 Docker Image Published" >> $GITHUB_STEP_SUMMARY
