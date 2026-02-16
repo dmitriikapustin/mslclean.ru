@@ -187,7 +187,7 @@ export default function HomePage() {
             <div className={styles.navRight}>
               <div className={styles.navPhone}>
                 <a href="tel:+79999999999">+7 (999) 999-99-99</a>
-                <span className={styles.navPhoneHint}>Работаем 24/7</span>
+                <span className={styles.navPhoneHint}>Пн-Пт 9:00–19:00</span>
               </div>
               <Link href="#contact" className={styles.navButton}>
                 Получить расчёт
@@ -464,7 +464,7 @@ export default function HomePage() {
                     <a href="tel:+79999999999" className={styles.contactPhone}>
                       +7 (999) 999-99-99
                     </a>
-                    <span className={styles.contactHint}>Работаем 24/7</span>
+                    <span className={styles.contactHint}>Пн-Пт 9:00–19:00</span>
                   </div>
                   <p className={styles.contactAlt}>Не любите звонить? Напишите на email</p>
                   <a href="mailto:info@mslclean.ru" className={styles.emailLink}>
@@ -515,14 +515,10 @@ export default function HomePage() {
             <div className={styles.footerInner}>
               {/* Top Grid */}
               <div className={styles.footerGrid}>
-                {/* Brand + Newsletter */}
+                {/* Brand */}
                 <div className={styles.footerBrand}>
                   <Logo />
-                  <p className={styles.footerTagline}>Будьте в курсе новостей</p>
-                  <div className={styles.newsletterForm}>
-                    <input type="email" placeholder="Email" className={styles.newsletterInput} />
-                    <button className={styles.newsletterBtn}>→</button>
-                  </div>
+                  <p className={styles.footerTagline}>Аутстафинг клинингового персонала для ресторанов и фитнес-клубов</p>
                 </div>
 
                 {/* Navigation */}
@@ -542,7 +538,7 @@ export default function HomePage() {
                   <div className={styles.footerAddress}>
                     <span>Москва, Россия</span>
                     <a href="tel:+79999999999">+7 (999) 999-99-99</a>
-                    <span>Работаем 24/7</span>
+                    <span>Пн-Пт 9:00–19:00</span>
                   </div>
                 </div>
 
@@ -562,15 +558,15 @@ export default function HomePage() {
                   info@mslclean.ru
                 </a>
                 <div className={styles.footerSocial}>
-                  <a href="#" className={styles.socialBtn}>Telegram</a>
-                  <a href="#" className={styles.socialBtn}>WhatsApp</a>
+                  <Link href="#contact" className={styles.socialBtn}>Telegram</Link>
+                  <Link href="#contact" className={styles.socialBtn}>WhatsApp</Link>
                 </div>
               </div>
 
               {/* Bottom */}
               <div className={styles.footerBottom}>
                 <Link href="/privacy-policy" className={styles.footerPolicy}>Политика обработки персональных данных</Link>
-                <span className={styles.footerCopyright}>ИП Маслов Е.О. ИНН 631704563230 | MSL Clean © 2025</span>
+                <span className={styles.footerCopyright}>ИП Маслов Е.О. ИНН 631704563230 | MSL Clean © 2026</span>
               </div>
             </div>
           </footer>
