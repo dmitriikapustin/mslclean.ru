@@ -278,6 +278,7 @@
   position: relative;
   height: 60vh;
   min-height: 400px;
+  overflow: hidden;
 }
 
 .bannerBkg {
@@ -344,7 +345,7 @@
   font-size: 0.9rem;
   color: var(--color-text-muted);
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255, 112, 67, 0.2);
+  border-bottom: 1px solid rgba(31, 88, 102, 0.15);
 }
 
 .problemList li:last-child {

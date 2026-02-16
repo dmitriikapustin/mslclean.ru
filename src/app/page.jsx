@@ -258,14 +258,14 @@ export default function HomePage() {
         </section>
 
         {/* ===================== BANNER ===================== */}
-        <section className={styles.bannerSection}>
-          <motion.div 
-            className={styles.bannerBkg}
-            initial={{ clipPath: 'inset(100% 0 0 0)' }}
-            whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          >
+        <motion.section 
+          className={styles.bannerSection}
+          initial={{ clipPath: 'inset(100% 0 0 0)' }}
+          whileInView={{ clipPath: 'inset(0% 0 0 0)' }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className={styles.bannerBkg}>
             <Image 
               src="/images/banner-kitchen.jpg"
               alt="Команда клининга за работой в ресторане"
@@ -273,8 +273,8 @@ export default function HomePage() {
               className={styles.bannerImage}
             />
             <div className={styles.bannerOverlay} />
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
         {/* ===================== PROBLEMS ===================== */}
         <section className={styles.problemsSection} id="problems">
