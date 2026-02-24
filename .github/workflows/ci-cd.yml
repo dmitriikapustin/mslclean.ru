@@ -94,3 +94,18 @@ jobs:
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           echo "docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+
+  # Деплой через Coolify
+  deploy:
+    name: 🚀 Deploy to Coolify
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: 🚀 Trigger Coolify Deploy
+        run: |
+          curl -sf -X GET \
+            "https://coolify.mslclean.ru/api/v1/deploy?uuid=iccko00c4swcwwow0gskks88&force=false" \
+            -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
+          echo "### 🚀 Coolify Deploy Triggered" >> $GITHUB_STEP_SUMMARY
